@@ -35,10 +35,10 @@ from isaaclab.envs.mdp.actions.actions_cfg import JointPositionActionCfg, Relati
 from isaaclab.sim.spawners.from_files.from_files_cfg import GroundPlaneCfg, UsdFileCfg
 from isaaclab.terrains import TerrainImporterCfg
 from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR
-import isaaclab_tasks.manager_based.manipulation.nonPrehensile.mdp as mdp
+import IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.mdp as mdp
 from collections.abc import Sequence
 
-from isaaclab_tasks.manager_based.manipulation.nonPrehensile.cloud import Cloud
+from IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.cloud import Cloud
 
 _CLOUD_CACHE = {}
 from scipy.spatial.transform import Rotation as R
@@ -577,8 +577,8 @@ class NonPrehensileEnv(ManagerBasedRLEnv):
         # Increment global step and periodically print timers
         # self._global_step += 1
         # if self._global_step % 1 == 0:
-        #     from isaaclab_tasks.manager_based.manipulation.nonPrehensile.mdp.observations import print_obs_timers
-        #     from isaaclab_tasks.manager_based.manipulation.nonPrehensile.mdp.commands import print_cmd_timers
+        #     from IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.mdp.observations import print_obs_timers
+        #     from IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.mdp.commands import print_cmd_timers
         #     print_obs_timers(self)
         #     print_cmd_timers(self)
 
@@ -629,7 +629,7 @@ class NonPrehensileEnv(ManagerBasedRLEnv):
         self.sim.physx.bounce_threshold_velocity = 0.05
         # self.sim.physx.friction_correlation_distance = 0.00625
         # Cache object scales for all envs to avoid per-step USD queries
-        import isaaclab_tasks.manager_based.manipulation.nonPrehensile.mdp as mdp
+        import IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.mdp as mdp
         from isaaclab.managers import SceneEntityCfg
         all_env_ids = list(range(self.num_envs))
         scales = mdp.get_rigid_body_scale(self, SceneEntityCfg("object"), all_env_ids)

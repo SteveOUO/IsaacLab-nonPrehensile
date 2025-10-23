@@ -52,7 +52,7 @@ def reset_initial_object_position(
     poses = torch.zeros((num_resets, 13), device=env.device)
     
     # Per-env sampling from stable pose with random yaw offset
-    from isaaclab_tasks.manager_based.manipulation.nonPrehensile.env import get_cached_cloud
+    from IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.env import get_cached_cloud
     assets_cfg = asset.cfg.spawn.assets_cfg
     scales = get_rigid_body_scale(env, SceneEntityCfg("object"), env_ids)
     

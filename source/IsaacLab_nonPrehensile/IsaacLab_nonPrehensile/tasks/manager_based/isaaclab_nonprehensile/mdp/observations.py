@@ -14,8 +14,8 @@ from isaaclab.utils.math import subtract_frame_transforms, matrix_from_quat
 from scipy.spatial.transform import Rotation as R
 if TYPE_CHECKING:
     from isaaclab.envs import ManagerBasedRLEnv
-from isaaclab_tasks.manager_based.manipulation.nonPrehensile.cloud import Cloud
-import isaaclab_tasks.manager_based.manipulation.nonPrehensile.mdp as mdp
+from IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.cloud import Cloud
+import IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.mdp as mdp
 
 # Lightweight profiling utilities for observation functions
 import time
@@ -565,7 +565,7 @@ def get_object_pointcloud(
     num_envs = object.data.root_pos_w.shape[0]
     
     # Optimized batch processing by asset type
-    from isaaclab_tasks.manager_based.manipulation.nonPrehensile.env import get_cached_cloud
+    from IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.env import get_cached_cloud
     
     # Group environments by asset type for batch processing
     env_to_asset = {env_idx: env_idx % len(assets_cfg) for env_idx in range(num_envs)}

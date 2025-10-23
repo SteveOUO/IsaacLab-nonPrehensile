@@ -44,7 +44,7 @@ def object_goal_distance_tanh(
     env: ManagerBasedRLEnv,
     std: float,
     command_name: str,
-    obj_ee_distance_threshold: float = 0.05,
+    obj_ee_distance_threshold: float = 0.1,
     ee_frame_cfg: SceneEntityCfg = SceneEntityCfg("ee_frame"),
     object_cfg: SceneEntityCfg = SceneEntityCfg("object"),
 ) -> torch.Tensor:

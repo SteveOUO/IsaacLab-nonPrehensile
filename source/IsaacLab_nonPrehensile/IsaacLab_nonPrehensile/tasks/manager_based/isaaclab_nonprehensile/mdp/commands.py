@@ -20,8 +20,8 @@ from isaaclab.utils.math import quat_from_euler_xyz
 if TYPE_CHECKING:
     from isaaclab.envs import ManagerBasedRLEnv
 
-from isaaclab_tasks.manager_based.manipulation.nonPrehensile.cloud import Cloud
-import isaaclab_tasks.manager_based.manipulation.nonPrehensile.mdp as mdp
+from IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.cloud import Cloud
+import IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.mdp as mdp
 
 # Lightweight profiling utilities for command functions
 import time
@@ -125,7 +125,7 @@ class StablePoseCommand(CommandTerm):
             sel = torch.tensor(g["indices"], device=self.device, dtype=torch.long)
             scales_sub = scales.index_select(0, sel)  # (G,3)
 
-            from isaaclab_tasks.manager_based.manipulation.nonPrehensile.env import get_cached_cloud
+            from IsaacLab_nonPrehensile.tasks.manager_based.isaaclab_nonprehensile.env import get_cached_cloud
             object_cloud = get_cached_cloud(obj_path)
 
             # Batch sample stable poses (returns numpy), then convert to torch
