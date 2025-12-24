@@ -23,7 +23,7 @@ This project is a Non-Prehensile Manipulation example/template built on Isaac La
 
 ## Prerequisites
 
-- Install Isaac-sim 4.5 and Isaac Lab 2.2.0 (Install from source code recommended). Official guide: `https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/source_installation.html`
+- Install Isaac-sim 5.0 (pip install recommended) and Isaac Lab 2.2.0 (Install from source code recommended). Official guide: `https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/source_installation.html`
 
 
 ## Install This Project (editable)
