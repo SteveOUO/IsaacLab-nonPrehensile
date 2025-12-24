@@ -88,6 +88,33 @@ object = RigidObjectCfg(
 
 ## Quickstart
 
+### 1. Environment Dependencies
+
+After installing Isaac Lab, run the following commands to install specialized dependencies for the PTV3 encoder:
+
+```bash
+# Install Flash Attention (avoiding build isolation for CUDA compatibility)
+pip install flash_attn==1.0.7 --no-build-isolation
+
+# Install debugging tools
+pip install icecream
+
+# Build and install PyTorch3D from source (required for KNN operations)
+git clone -b v0.7.8 --depth 1 https://github.com/facebookresearch/pytorch3d.git
+cd pytorch3d
+FORCE_CUDA=1 python setup.py bdist_wheel
+pip install dist/pytorch3d-0.7.8-cp311-cp311-linux_x86_64.whl
+cd ..
+```
+
+### 2. Path Configuration
+
+To utilize the customized version of `rsl_rl` included in this repository, export the project root to your `PYTHONPATH`:
+
+```bash
+export PYTHONPATH=$HOME/IsaacLab_nonPrehensile:$PYTHONPATH
+```
+
 ### Train (RSL-RL / PPO)
 
 ```bash
