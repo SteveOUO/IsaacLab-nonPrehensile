@@ -7,7 +7,7 @@ import torch as th
 import torch.nn as nn
 from einops import rearrange
 
-from flash_attn.flash_attention import FlashAttention
+from rsl_rl.modules.models.flash_attn_compat import FlashAttention
 
 from transformers.models.vit_mae.modeling_vit_mae import (
     ViTMAEModel,

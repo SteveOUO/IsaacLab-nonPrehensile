@@ -23,7 +23,7 @@ from rsl_rl.modules.util.config import ConfigBase
 from rsl_rl.modules.util.torch_util import merge_shapes
 
 from icecream import ic
-from flash_attn.flash_attention import FlashAttention
+from rsl_rl.modules.models.flash_attn_compat import FlashAttention
 
 S = Union[int, Tuple[int, ...]]
 T = th.Tensor

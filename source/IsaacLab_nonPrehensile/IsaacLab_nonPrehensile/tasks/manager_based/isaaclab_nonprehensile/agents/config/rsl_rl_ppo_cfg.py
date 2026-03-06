@@ -79,7 +79,7 @@ class ICPActorCriticCfg:
     class_name: str = "ActorCriticICP"
     
     # ICP pretrained weights path
-    icp_weights_path: str | None = '/home/steve/corn/ckpts/512-32-balanced-SAM-wd-5e-05-920'
+    icp_weights_path: str | None = './ckpts/512-32-balanced-SAM-wd-5e-05-920'
     # icp_weights_path: str | None = None
     freeze_icp: bool = True     # Whether to freeze ICP parameters
     

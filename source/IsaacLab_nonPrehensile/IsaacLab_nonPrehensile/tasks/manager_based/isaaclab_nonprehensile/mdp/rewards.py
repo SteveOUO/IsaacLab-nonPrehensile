@@ -116,13 +116,8 @@ def task_success_reward(
     object_cfg: SceneEntityCfg = SceneEntityCfg("object"),
     planar: bool = False,  # If True, only consider x and y position
     base_reward: float = 1.0,  # Base reward for success
-    time_bonus_factor: float = 0.5,  # Bonus factor for early completion
 ) -> torch.Tensor:
-    """Task success reward: gives base_reward + time bonus when object reaches target pose within thresholds.
-    
-    The time bonus is calculated as: time_bonus_factor * (remaining_steps / max_steps)
-    This encourages faster completion of the task.
-    """
+    """Task success reward: gives base_reward when object reaches target pose within thresholds."""
     object: RigidObject = env.scene[object_cfg.name]
     command = env.command_manager.get_command(command_name)
     
@@ -157,18 +152,10 @@ def task_success_reward(
     # Calculate success mask
     success_mask = position_reached & rotation_reached
     
-    # Calculate time bonus based on remaining steps
-    current_step = env.episode_length_buf
-    max_steps = env.max_episode_length
-    remaining_steps = max_steps - current_step
-    
-    # Time bonus: more reward for completing earlier
-    time_bonus = time_bonus_factor * (remaining_steps / max_steps)
-    
-    # Final reward: base_reward + time_bonus for success, 0.0 for failure
+    # Final reward: base_reward for success, 0.0 for failure
     reward = torch.where(
         success_mask,
-        base_reward + time_bonus,
+        base_reward,
         torch.zeros_like(success_mask, dtype=torch.float)
     )
 

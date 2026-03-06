@@ -11,7 +11,7 @@ import einops
 import math
 
 
-from flash_attn.flash_attention import FlashMHA, FlashAttention
+from rsl_rl.modules.models.flash_attn_compat import FlashMHA, FlashAttention
 from transformers.activations import ACT2FN
 from rsl_rl.modules.models.sdf.encoder.point_tokens import SpatialSort, HilbertCode
 from rsl_rl.modules.models.common import (

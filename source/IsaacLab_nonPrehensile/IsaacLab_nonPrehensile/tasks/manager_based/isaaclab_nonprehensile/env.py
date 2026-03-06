@@ -234,7 +234,7 @@ class NonPrehensileSceneCfg(InteractiveSceneCfg):
     object = RigidObjectCfg(
         prim_path="{ENV_REGEX_NS}/Object",
         spawn=sim_utils.MultiAssetSpawnerCfg(
-            assets_cfg=load_object_candidates("/home/steve/Downloads/DGN_clean/yes.json", usd_dir="/home/steve/Downloads/DGN_clean/coacd_usd", obj_dir="/home/steve/Downloads/DGN_clean/coacd_normalized"),
+            assets_cfg=load_object_candidates("/home/steve/Downloads/DGN/yes.json", usd_dir="/home/steve/Downloads/DGN/coacd_usd_convexhull", obj_dir="/home/steve/Downloads/DGN/coacd_normalized"),
             random_choice=False,
             rigid_props=RigidBodyPropertiesCfg(
                 solver_position_iteration_count=16,
@@ -258,8 +258,8 @@ class CommandsCfg:
     target_object_pose = mdp.StablePoseCommandCfg(
         resampling_time_range=(1e9, 1e9),
         debug_vis=True,  # Visualize target pose
-        xy_offset_range=0.2,
-        initial_position_range=0.2,
+        xy_offset_range=0.15,
+        initial_position_range=0.15,
     )
 
 @configclass
@@ -409,7 +409,6 @@ class RewardsCfg:
             "rotation_threshold": 0.1, 
             "planar": False,
             "base_reward": 1.0,  # Base reward for success
-            "time_bonus_factor": 0.5,  # Bonus factor for early completion
         },
         weight=2000.0
     )

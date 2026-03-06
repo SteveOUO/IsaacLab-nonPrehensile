@@ -9,7 +9,7 @@ import torch.nn as nn
 import einops
 
 from torch.nn.modules.activation import MultiheadAttention
-from flash_attn.flash_attention import FlashMHA
+from rsl_rl.modules.models.flash_attn_compat import FlashMHA
 
 from rsl_rl.modules.models.common import PosEncodingSine, MLP
 from rsl_rl.modules.models.common import replace_layer
