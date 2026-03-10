@@ -172,7 +172,7 @@ python scripts/random_agent.py --task=Isaac-nonPrehensile-Franka-v0
 
 ![Training video preview](asset/video.gif)
 
-[Download / view the full video](asset/video.mp4)
+[view the full video](asset/video.mp4)
 
 **Training curve** — Reward and success rate vs. environment steps:
 
