@@ -176,7 +176,7 @@ python scripts/random_agent.py --task=Isaac-nonPrehensile-Franka-v0
 
 ![Training curve](asset/curve.png)
 
-These results were obtained on a **single RTX 4090D** with **4096 parallel environments**, trained for approximately **48 hours**.
+These results were obtained on a **single RTX 4090D** with **4096 parallel environments**, trained for approximately **24 hours**.
 
 
 ## Environment Highlights (excerpt)
