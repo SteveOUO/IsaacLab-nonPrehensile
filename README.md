@@ -168,15 +168,17 @@ python scripts/random_agent.py --task=Isaac-nonPrehensile-Franka-v0
 
 ## Training Results
 
-**Training video** — Demonstrates the learned policy performing non-prehensile manipulation:
+**Training video** — Demonstrates the learned policy performing non-prehensile manipulation (preview GIF, first few seconds):
 
-<video src="asset/video.mp4" controls width="1080"></video>
+![Training video preview](asset/video.gif)
+
+[Download / view the full video](asset/video.mp4)
 
 **Training curve** — Reward and success rate vs. environment steps:
 
 ![Training curve](asset/curve.png)
 
-These results were obtained on a **single RTX 4090D** with **4096 parallel environments**, trained for approximately **24 hours**.
+These results were obtained on a **single RTX 4090D** with **4096 parallel environments**, trained for approximately **48 hours**.
 
 
 ## Environment Highlights (excerpt)
