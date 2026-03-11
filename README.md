@@ -2,12 +2,24 @@
 
 This project is a Non-Prehensile Manipulation example/template built on Isaac Lab for Reinforcement Learning (RSL-RL) training and evaluation. It uses the Franka Panda arm, supports multi-asset spawning and domain randomization, tracks success rates, and provides end-to-end train/evaluate/play flows with JIT/ONNX export.
 
-This repository is an Isaac Lab implementation and adaptation of [CORN](https://sites.google.com/view/contact-non-prehensile) (Contact-based Object Representation for Nonprehensile manipulation).
+This repository is an Isaac Lab implementation and adaptation of [DyWA](https://pku-epic.github.io/DyWA/) (Dynamics-adaptive World Action Model for Generalizable Non-prehensile Manipulation).
 
-- **Env framework**: Manager-Based RL Env (Isaac Lab)
-- **Algorithm**: RSL-RL (PPO)
-- **Assets**: Batch loading from a JSON list and local USD/OBJ directories
-- **Features**: Training (train), evaluation (eval; success rate + per-object stats), play/export (JIT/ONNX)
+**Demo (preview)**:
+
+![Training video preview](asset/video.gif)
+
+[Download / view the full video](asset/video.mp4)
+
+## Possible Extensions
+
+This codebase is intended as a flexible template for contact-rich non-prehensile manipulation.  
+On top of this implementation, it should be straightforward to:
+
+- Reproduce several recent non-prehensile manipulation papers based on this CORN-style pipeline (specific papers to be listed here).
+- Swap in alternative point-cloud encoders (e.g., PointNet, Point Transformer, MAE-style encoders) while reusing the same Isaac Lab task, reward, and evaluation pipeline.
+- Prototype new RL / IL algorithms that operate on the same observation and command interface.
+
+We plan to add concrete pointers to specific papers and corresponding configuration files in future updates.
 
 
 ## Repository Structure
@@ -99,6 +111,8 @@ pip install dist/pytorch3d-0.7.8-cp311-cp311-linux_x86_64.whl
 cd ..
 ```
 
+Download the pretrained ICP encoder weights **`512-32-balanced-SAM-wd-5e-05-920`** from [Hugging Face (`imm-unicorn/corn-public`)](https://huggingface.co/imm-unicorn/corn-public/tree/main), then update `icp_weights_path` in `source/IsaacLab_nonPrehensile/IsaacLab_nonPrehensile/tasks/manager_based/isaaclab_nonprehensile/agents/config/rsl_rl_ppo_cfg.py` (default: `./ckpts/512-32-balanced-SAM-wd-5e-05-920`) to point to your local download directory.
+
 ### 2. Path Configuration
 
 To utilize the customized version of `rsl_rl` included in this repository, export the project root to your `PYTHONPATH`:
@@ -166,20 +180,19 @@ python scripts/random_agent.py --task=Isaac-nonPrehensile-Franka-v0
 > Note: A zero-action agent is not provided. You can adapt from `random_agent.py` if needed.
 
 
+
+
 ## Training Results
 
-**Training video** — Demonstrates the learned policy performing non-prehensile manipulation (preview GIF, first few seconds):
+**Training video** — Demonstrates the learned policy performing non-prehensile manipulation:
 
-![Training video preview](asset/video.gif)
-
-[view the full video](asset/video.mp4)
+[Download / view the full video](asset/video.mp4)
 
 **Training curve** — Reward and success rate vs. environment steps:
 
 ![Training curve](asset/curve.png)
 
 These results were obtained on a **single RTX 4090D** with **4096 parallel environments**, trained for approximately **48 hours**.
-
 
 ## Environment Highlights (excerpt)
 
@@ -198,3 +211,31 @@ These results were obtained on a **single RTX 4090D** with **4096 parallel envir
 ## License
 
 Files in this repository include BSD-3-Clause license headers. Please use and distribute under the corresponding terms.
+
+
+## References
+
+```bibtex
+@misc{zheng2026emergingextrinsicdexteritycluttered,
+      title={Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning},
+      author={Yixin Zheng and Jiangran Lyu and Yifan Zhang and Jiayi Chen and Mi Yan and Yuntian Deng and Xuesong Shi and Xiaoguang Zhao and Yizhou Wang and Zhizheng Zhang and He Wang},
+      year={2026},
+      eprint={2603.09882},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2603.09882},
+}
+@article{cho2024corn,
+  title={Corn: Contact-based object representation for nonprehensile manipulation of general unseen objects},
+  author={Cho, Yoonyoung and Han, Junhyek and Cho, Yoontae and Kim, Beomjoon},
+  journal={arXiv preprint arXiv:2403.10760},
+  year={2024}
+}
+@inproceedings{lyu2025dywa,
+  title={Dywa: Dynamics-adaptive world action model for generalizable non-prehensile manipulation},
+  author={Lyu, Jiangran and Li, Ziming and Shi, Xuesong and Xu, Chaoyi and Wang, Yizhou and Wang, He},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={11058--11068},
+  year={2025}
+}
+```
