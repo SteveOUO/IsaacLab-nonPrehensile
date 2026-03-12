@@ -19,7 +19,7 @@ import cli_args  # isort: skip
 parser = argparse.ArgumentParser(description="Evaluate an RL agent with RSL-RL and report success rate.")
 parser.add_argument("--task", type=str, default=None, help="Name of the task.")
 parser.add_argument("--num_envs", type=int, default=1248, help="Number of environments to simulate.")
-parser.add_argument("--num_episodes", type=int, default=10000, help="Number of episodes to evaluate.")
+parser.add_argument("--num_episodes", type=int, default=2000, help="Number of episodes to evaluate.")
 parser.add_argument("--max_episode_steps", type=int, default=300, help="Safety cap on episode length (steps).")
 parser.add_argument("--seed", type=int, default=None, help="Seed used for the environment")
 parser.add_argument("--video", action="store_true", default=False, help="Record videos during evaluation (num_envs must be 1).")

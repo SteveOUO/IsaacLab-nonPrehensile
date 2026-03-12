@@ -142,6 +142,8 @@ Training logs are saved under: `logs/rsl_rl/<experiment_name>/<time>[_run]`.
 
 ### Evaluate (success rate + per-object stats)
 
+A trained model is provided for testing: [Hugging Face (Steve3zz/DGN_usd)](https://huggingface.co/datasets/Steve3zz/DGN_usd).
+
 ```bash
 # Automatically resolves checkpoint from the experiment folder
 # (use --load_run/--checkpoint for precise selection)
@@ -149,7 +151,8 @@ python scripts/eval.py \
   --task=Isaac-nonPrehensile-Franka-v0 \
   --experiment_name=franka_nonprehensile \
   --num_envs=64 \
-  --num_episodes=1000
+  --num_episodes=1000 \
+  --load_run "your ckpt dir"
 ```
 
 - Supports `--video` (only when `num_envs=1`) and `--real_time`
